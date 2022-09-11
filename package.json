@@ -1,0 +1,23 @@
+{
+  "name": "epoch-to-human-readable",
+  "version": "1.0.0",
+  "description": "Convert epoch into a human readable format",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Wyatt-SG/epoch-to-human-readable.git"
+  },
+  "author": "wyatt_sg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wyatt-SG/epoch-to-human-readable/issues"
+  },
+  "homepage": "https://github.com/Wyatt-SG/epoch-to-human-readable#readme",
+  "devDependencies": {
+    "typescript": "^4.8.3"
+  }
+}
