@@ -1,7 +1,9 @@
 import convertToStandardDateTime from "./standardDateTime";
 
 describe("convertToStandardDateTime", () => {
-    test("converts epoch to standard date time", () => {        
-        expect(convertToStandardDateTime(1662181133000)).toBe("9/3/22 12:58 AM");
+    test("converts epoch to standard date time", () => {
+        const timeRegex = new RegExp(/^(9\/3\/22) ([0-9]?[0-9]?:[0-9]?[0-9]?) (AM|PM)$/);
+   
+        expect(convertToStandardDateTime(1662181133000)).toMatch(timeRegex);
     });
 })
