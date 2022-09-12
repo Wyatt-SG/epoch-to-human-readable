@@ -1,4 +1,4 @@
-import convertToStandardDate from "./conversions/standardDate";
+import convertToStandardDate from "./conversions/standardDate/standardDate";
 import { TimeFormat } from "./types/TimeFormat";
 
 const isEpoch = (epoch: unknown): epoch is number | string => {
