@@ -17,5 +17,5 @@ yarn add epoch-to-human-readable
 ```javascript
 import convertEpoch from 'epoch-to-human-readable'
 
-convertEpoch(1451538000) // "12/31/15 12:00 AM"
+convertEpoch(1451538000) // "12/31/15 12:00 AM EST"
 ```
