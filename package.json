@@ -1,7 +1,7 @@
 {
   "name": "epoch-to-human-readable",
   "version": "1.0.1",
-  "description": "Convert epoch into a human readable format",
+  "description": "Convert unix epoch into a human readable format",
   "main": "src/index.ts",
   "scripts": {
     "build": "npx tsc",
