@@ -1,5 +1,4 @@
-import convertToStandardDate from "./conversions/standardDate/standardDate";
-import convertToStandardDateTime from "./conversions/standardDateTime/standardDateTime";
+import { convertToStandardDate, convertToStandardDateTime, convertToStandardDateTimeWithTimeZone } from "./conversions/conversions";
 import { TimeFormat } from "./types/TimeFormat";
 
 const isEpoch = (epoch: unknown): epoch is number | string => {
@@ -29,7 +28,7 @@ const convertEpoch: (epoch: number | string | unknown, format?: TimeFormat | und
         case 'SDT':
             return convertToStandardDateTime(sanitizedEpoch);
         case 'SDLTZ':
-            // call function
+            return convertToStandardDateTimeWithTimeZone(sanitizedEpoch);
         default:
             return undefined;
     }
