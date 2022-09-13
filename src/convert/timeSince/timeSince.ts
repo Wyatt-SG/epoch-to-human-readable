@@ -1,7 +1,7 @@
-import { TimeConversionFn } from "../../types/TimeConversionFn";
+import { TimeConversionFn } from '../../types/TimeConversionFn';
 
 const toTimeSince: TimeConversionFn = (epoch) => {
-    return ''
-}
+  return '';
+};
 
 export default toTimeSince;
