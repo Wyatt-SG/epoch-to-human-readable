@@ -33,10 +33,8 @@ const convertEpoch: (
       return convert.toStandardDate(sanitizedEpoch);
     case 'SDT':
       return convert.toStandardDateTime(sanitizedEpoch);
-    case 'SDLTZ':
-      return convert.toStandardDateTimeWithTimeZone(sanitizedEpoch);
     default:
-      return undefined;
+      return convert.toStandardDateTimeWithTimeZone(sanitizedEpoch);
   }
 };
 
