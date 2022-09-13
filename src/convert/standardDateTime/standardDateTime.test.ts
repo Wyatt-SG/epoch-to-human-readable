@@ -1,11 +1,10 @@
+import regex, { getCurrentTime } from '../testingUtils';
 import toStandardDateTime from './standardDateTime';
 
 describe('toStandardDateTime', () => {
-  test('converts epoch to standard date time', () => {
-    const timeRegex = new RegExp(
-      /^(9\/3\/22) ([0-9]?[0-9]?:[0-9]?[0-9]?) (AM|PM)$/
-    );
+  it('converts current epoch to MM/DD/YY HH:MM AM/PM format', () => {
+    const format = new RegExp(regex.MMDDYY.source + " " + regex.HHMM.source + " " + regex.AMPM.source);
 
-    expect(toStandardDateTime(1662181133000)).toMatch(timeRegex);
+    expect(toStandardDateTime(getCurrentTime())).toMatch(format);
   });
 });
