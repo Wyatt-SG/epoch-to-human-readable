@@ -1,4 +1,4 @@
-import { convertToStandardDate, convertToStandardDateTime, convertToStandardDateTimeWithTimeZone } from "./conversions/conversions";
+import convert from "./convert";
 import { TimeFormat } from "./types/TimeFormat";
 
 const isEpoch = (epoch: unknown): epoch is number | string => {
@@ -12,23 +12,23 @@ const convertEpoch: (epoch: number | string | unknown, format?: TimeFormat | und
 
     switch (format) {
         case 'ATSE':
-            // call function
+            return convert.toAbbreviatedTimeSince(sanitizedEpoch);
         case 'SATSE':
-            // call function
+            return convert.toSemiAbbreviatedTimeSince(sanitizedEpoch);
         case 'TSE':
-            // call function
+            return convert.toTimeSince(sanitizedEpoch);
         case 'HRDT':
-            // call function
+            return convert.toHumanReadableDateTime(sanitizedEpoch);
         case 'HRDTZ':
-            // call function
+            return convert.toHumanReadableDateTimeWithTimeZone(sanitizedEpoch);
         case 'AHRD':
-            // call function
+            return convert.toAbbreviatedHumanReadableDate(sanitizedEpoch);
         case 'SD':
-            return convertToStandardDate(sanitizedEpoch);
+            return convert.toStandardDate(sanitizedEpoch);
         case 'SDT':
-            return convertToStandardDateTime(sanitizedEpoch);
+            return convert.toStandardDateTime(sanitizedEpoch);
         case 'SDLTZ':
-            return convertToStandardDateTimeWithTimeZone(sanitizedEpoch);
+            return convert.toStandardDateTimeWithTimeZone(sanitizedEpoch);
         default:
             return undefined;
     }
