@@ -1,6 +1,6 @@
 {
   "name": "epoch-to-human-readable",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert unix epoch into a human readable format",
   "main": "src/index.ts",
   "scripts": {
