@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "test": "jest",
-    "lint": "eslint --ext src/**/*.ts",
+    "lint": "eslint --ext src/*.ts src/**/*.ts src/**/**/*.ts",
     "format": "prettier --write src/*.ts src/**/*.ts src/**/**/*.ts"
   },
   "repository": {
