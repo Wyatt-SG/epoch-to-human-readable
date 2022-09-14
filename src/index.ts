@@ -1,38 +1,42 @@
-import { convertToStandardDate, convertToStandardDateTime, convertToStandardDateTimeWithTimeZone } from "./conversions/conversions";
-import { TimeFormat } from "./types/TimeFormat";
+import convert from './convert';
+import { TimeFormat } from './types/TimeFormat';
 
 const isEpoch = (epoch: unknown): epoch is number | string => {
-    return (typeof epoch === "number" || typeof epoch === "string") && epoch !== undefined;
-}
+  return (
+    (typeof epoch === 'number' || typeof epoch === 'string') &&
+    epoch !== undefined
+  );
+};
 
-const convertEpoch: (epoch: number | string | unknown, format?: TimeFormat | undefined) => string | undefined = (epoch, format = 'SDLTZ') => {
-    if (!isEpoch(epoch)) return undefined;
+const convertEpoch: (
+  epoch: number | string | unknown,
+  format?: TimeFormat | undefined
+) => string | undefined = (epoch, format = 'SDLTZ') => {
+  if (!isEpoch(epoch)) return undefined;
 
-    const sanitizedEpoch: number = Number(epoch) * 1000;
+  const sanitizedEpoch: number = Number(epoch) * 1000;
 
-    switch (format) {
-        case 'ATSE':
-            // call function
-        case 'SATSE':
-            // call function
-        case 'TSE':
-            // call function
-        case 'HRDT':
-            // call function
-        case 'HRDTZ':
-            // call function
-        case 'AHRD':
-            // call function
-        case 'SD':
-            return convertToStandardDate(sanitizedEpoch);
-        case 'SDT':
-            return convertToStandardDateTime(sanitizedEpoch);
-        case 'SDLTZ':
-            return convertToStandardDateTimeWithTimeZone(sanitizedEpoch);
-        default:
-            return undefined;
-    }
-}
+  switch (format) {
+    case 'ATSE':
+      return convert.toAbbreviatedTimeSince(sanitizedEpoch);
+    case 'SATSE':
+      return convert.toSemiAbbreviatedTimeSince(sanitizedEpoch);
+    case 'TSE':
+      return convert.toTimeSince(sanitizedEpoch);
+    case 'HRDT':
+      return convert.toHumanReadableDateTime(sanitizedEpoch);
+    case 'HRDTZ':
+      return convert.toHumanReadableDateTimeWithTimeZone(sanitizedEpoch);
+    case 'AHRD':
+      return convert.toAbbreviatedHumanReadableDate(sanitizedEpoch);
+    case 'SD':
+      return convert.toStandardDate(sanitizedEpoch);
+    case 'SDT':
+      return convert.toStandardDateTime(sanitizedEpoch);
+    default:
+      return convert.toStandardDateTimeWithTimeZone(sanitizedEpoch);
+  }
+};
 
 export default convertEpoch;
 
