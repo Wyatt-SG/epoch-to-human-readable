@@ -1,10 +1,9 @@
 import convert from './convert';
 import { TimeFormat } from './types/TimeFormat';
 
-const isEpoch = (epoch: unknown): epoch is number | string => {
+const isAcceptableFormat = (epoch: unknown): epoch is number | string => {
   return (
-    (typeof epoch === 'number' || typeof epoch === 'string') &&
-    epoch !== undefined
+    typeof epoch === 'number' || typeof epoch === 'string'
   );
 };
 
@@ -12,9 +11,10 @@ const convertEpoch: (
   epoch: number | string | unknown,
   format?: TimeFormat | undefined
 ) => string | undefined = (epoch, format = 'SDLTZ') => {
-  if (!isEpoch(epoch)) return undefined;
+  if (!isAcceptableFormat(epoch)) return undefined;
 
-  const sanitizedEpoch: number = Number(epoch) * 1000;
+  const sanitizedEpoch: number = 
+    (typeof epoch === 'string' ? parseInt(epoch) : epoch) * 1000;
 
   switch (format) {
     case 'ATSE':

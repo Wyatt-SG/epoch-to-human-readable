@@ -16,7 +16,7 @@ describe('toStandardDateTime', () => {
     expect(toStandardDateTime(getCurrentTime() - 172800010)).toMatch(format);
   });
 
-  it('should return in MMM DD format if after 48 hours and the year is the same as the current year', () => {
+  it('should return in MMM DD YYYY format if the year of the date !== current year', () => {
     const format = new RegExp(regex.ABBREVIATEDMONTH.source + " " + regex.DD.source + " " + regex.YYYY.source);
 
     expect(toStandardDateTime(getCurrentTime() - 31536000000)).toMatch(format);
